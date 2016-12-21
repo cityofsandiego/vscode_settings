@@ -1,6 +1,15 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "window.zoomLevel": 1,
+    "editor.detectIndentation": false,
+    "editor.renderWhitespace": true,
+    // Columns at which to show vertical rulers
+    "editor.rulers": [72],
+
+    // The number of spaces a tab is equal to. This setting is overriden based on the file contents when `editor.detectIndentation` is on.
+    "editor.tabSize": 4,
+
+    // Insert spaces when pressing Tab. This setting is overriden based on the file contents when `editor.detectIndentation` is on.
+    "editor.insertSpaces": true,
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -8,17 +17,27 @@
         "**/.DS_Store": true,
         "**/*.pyc": true
     },
-    "editor.detectIndentation": false,
-    "editor.renderWhitespace": true,
-    // Columns at which to show vertical rulers
-    "editor.rulers": [72],
-    
-    // The number of spaces a tab is equal to. This setting is overriden based on the file contents when `editor.detectIndentation` is on.
-    "editor.tabSize": 4,
-
-    // Insert spaces when pressing Tab. This setting is overriden based on the file contents when `editor.detectIndentation` is on.
-    "editor.insertSpaces": true,
     "files.associations": {
         "*.py": "python"
+    },
+    "window.zoomLevel": 1,
+    "python.formatting.provider": "yapf",
+    "python.formatting.yapfArgs": ["--style", "{based_on_style: pep8, indent_width: 4}"],
+    "python.formatting.formatOnSave": false,
+    "python.linter": "pep8",
+    "python.linting.pep8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.lintOnSave": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.autoSave": "onFocusChange",
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": "\\.py$",
+                "cmd": "yapf --style='{based_on_style: pep8, indent_width: 4}' --recursive --in-place ${file} && echo 'Formatted ${file}.'"
+            }
+        ]
     }
 }
